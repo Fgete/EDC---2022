@@ -36,8 +36,15 @@ public class SqliteSetBdd : MonoBehaviour
         // --- INITIALIZE COMPONENTS
         gcd = FindObjectOfType<GetCryptoData>();
         url = "URI=file:" + Application.persistentDataPath + "/My_Database";
+
+        // --- READ NFT TABLE (IF EXIST) TO CHECK IF DATABASE EXISTS
+        dbcon = InitConnection();
+        dbcon.Open();
+        // DropTables(dbcon);
+        ReadNftTable(dbcon);
+        dbcon.Close();
         
-        // --- GET CRYPTO DATA
+        // --- GET CRYPTO DATA (& CREATE DATABASE IF NOT EXIST)
         gcd.GetData();
     }
 
@@ -50,12 +57,14 @@ public class SqliteSetBdd : MonoBehaviour
 
     public void StartInitDatabase()
     {
+        // --- DATABASE INITIALIZER (RUN BY GCD IF DATABASE DOES NOT EXIST)
+        
         // --- INITIALIZE CONNECTION
         dbcon = InitConnection();
         dbcon.Open();
         
         // --- INITIALIZE TABLES
-        DropTables(dbcon);
+        // DropTables(dbcon);
         InitNftTable(dbcon);
         InitUserTable(dbcon);
         
@@ -132,14 +141,21 @@ public class SqliteSetBdd : MonoBehaviour
             cmnd.ExecuteNonQuery();
         }
     }
-
+    
     void ReadNftTable(IDbConnection conn)
     {
-        // READ ENTIRE TABLE
+        // READ NFT TABLE IF EXISTS & FILL NFT PUBLIC LIST
+        
+        IDbCommand cmnd_read_secure = conn.CreateCommand();
         IDbCommand cmnd_read = conn.CreateCommand();
         IDataReader reader;
+
+        string secureQuery = "SELECT name FROM sqlite_master WHERE type='table' AND name='nft_table'";
+        cmnd_read_secure.CommandText = secureQuery;
+        reader = cmnd_read_secure.ExecuteReader();
+        if (reader[0].ToString() != "nft_table") return;
         
-        string query ="SELECT * FROM nft_table";
+        string query = "SELECT * FROM nft_table";
         cmnd_read.CommandText = query;
         reader = cmnd_read.ExecuteReader();
 
@@ -205,17 +221,17 @@ public class SqliteSetBdd : MonoBehaviour
             }
         }
     }
+    
+    
 
-
-
-
-    // --- CONVERTIONS
+    // --- CONVERSIONS
     string CTP(float f)
     {
         string s = f.ToString();
         s = s.Replace(',', '.');
         return s;
     }
+    
     float EurToBtc(float eur)
     {
         float EUR = gcd.cryptoList[3].value;
