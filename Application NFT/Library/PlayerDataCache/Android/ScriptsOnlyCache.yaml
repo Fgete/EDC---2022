@@ -1,7 +1,19 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
-    - SqliteTest
+    - Dashboard
+    - Gallery
+    - GalleryNft
+    - GetCryptoData
+    - Login
+    - Market
+    - MarketNft
+    - SqliteSetBdd
+    - Tile
+    - Wallet
+    Unity.CollabProxy.Editor.dll:
+    - Unity.Cloud.Collaborate.UserInterface.CollaborateWindow
+    - Unity.Cloud.Collaborate.UserInterface.WindowCache
     Unity.PlasticSCM.Editor.dll:
     - Unity.PlasticSCM.Editor.PlasticWindow
     Unity.Rider.Editor.dll:
@@ -24,8 +36,12 @@ ScriptsOnlyBuild:
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
+    - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
+    - UnityEngine.UI.GridLayoutGroup
+    - UnityEngine.UI.Image
+    - UnityEngine.UI.InputField
     - UnityEngine.UI.Text
   sceneClasses:
     Assets/Scenes/MainScene.unity:
@@ -43,24 +59,46 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
-    - Class: 89
-      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
-    - Class: 108
-      Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 2006}
+      Script: {instanceID: 1448}
     - Class: 114
-      Script: {instanceID: 2298}
+      Script: {instanceID: 2016}
     - Class: 114
-      Script: {instanceID: 2410}
+      Script: {instanceID: 2322}
     - Class: 114
-      Script: {instanceID: 2460}
+      Script: {instanceID: 2438}
     - Class: 114
-      Script: {instanceID: 2578}
+      Script: {instanceID: 2490}
     - Class: 114
-      Script: {instanceID: 2762}
+      Script: {instanceID: 2618}
+    - Class: 114
+      Script: {instanceID: 2660}
+    - Class: 114
+      Script: {instanceID: 2804}
+    - Class: 114
+      Script: {instanceID: 2892}
+    - Class: 114
+      Script: {instanceID: 3512}
+    - Class: 114
+      Script: {instanceID: 4464}
+    - Class: 114
+      Script: {instanceID: 53714}
+    - Class: 114
+      Script: {instanceID: 74358}
+    - Class: 114
+      Script: {instanceID: 76698}
+    - Class: 114
+      Script: {instanceID: 83764}
+    - Class: 114
+      Script: {instanceID: 83804}
+    - Class: 114
+      Script: {instanceID: 84908}
+    - Class: 114
+      Script: {instanceID: 108936}
+    - Class: 114
+      Script: {instanceID: 113708}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -68,6 +106,8 @@ ScriptsOnlyBuild:
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
+      Script: {instanceID: 0}
+    - Class: 213
       Script: {instanceID: 0}
     - Class: 222
       Script: {instanceID: 0}
@@ -78,16 +118,16 @@ ScriptsOnlyBuild:
   scriptHashData:
   - hash:
       serializedVersion: 2
-      Hash: 5ab533713adae59372fb3e10a585c186
-    assemblyName: Unity.Timeline.dll
-    namespaceName: UnityEngine.Timeline
-    className: AnimationPlayableAsset
-  - hash:
-      serializedVersion: 2
       Hash: a6e561615949734e9f12f9b61661f43e
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Image
+  - hash:
+      serializedVersion: 2
+      Hash: 5ab533713adae59372fb3e10a585c186
+    assemblyName: Unity.Timeline.dll
+    namespaceName: UnityEngine.Timeline
+    className: AnimationPlayableAsset
   - hash:
       serializedVersion: 2
       Hash: 77aaaaa51f7a8d8ff333a879741e47d2
@@ -216,10 +256,10 @@ ScriptsOnlyBuild:
     className: TextMeshProUGUI
   - hash:
       serializedVersion: 2
-      Hash: 6d7dd5ed67d9a373e243e657b3604a80
+      Hash: 9788ca19b8afaf135bd069ac38599aec
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: SqliteTest
+    className: SqliteSetBdd
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -402,6 +442,12 @@ ScriptsOnlyBuild:
     className: ActivationTrack
   - hash:
       serializedVersion: 2
+      Hash: b4519861468bf7fc558ffe69eabc4076
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GetCryptoData
+  - hash:
+      serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -502,7 +548,55 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
     className: TouchInputModule
+  - hash:
+      serializedVersion: 2
+      Hash: 50b5ad9948f5be4b3379f0249732f259
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Login
+  - hash:
+      serializedVersion: 2
+      Hash: 197080e2c477280321a31c4c0d6041c9
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Wallet
+  - hash:
+      serializedVersion: 2
+      Hash: caa04a6173b3026bd3164c7cd5da58a9
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Dashboard
+  - hash:
+      serializedVersion: 2
+      Hash: 74cd162855601d76e706e9e092f2331c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Gallery
+  - hash:
+      serializedVersion: 2
+      Hash: f2bcae836cd08973ebda1a11efe8e74c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Tile
+  - hash:
+      serializedVersion: 2
+      Hash: 141c8de2473e2f52e5a98a1a92ebf508
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Market
+  - hash:
+      serializedVersion: 2
+      Hash: 57e58adc8212205494d3fc1497a44d9d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MarketNft
+  - hash:
+      serializedVersion: 2
+      Hash: 57e58adc8212205494d3fc1497a44d9d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GalleryNft
   platform: 13
   scenePathNames:
   - Assets/Scenes/MainScene.unity
-  playerPath: C:/Users/franc/Desktop/Cours/EDC/EDC - 2022/Application NFT/Builds/app_1.0.apk
+  playerPath: C:/Users/franc/Desktop/Cours/EDC/EDC - 2022/Application NFT/Builds/app_1.1.apk
