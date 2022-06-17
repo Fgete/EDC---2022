@@ -42,7 +42,8 @@ public class SqliteSetBdd : MonoBehaviour
     public userData ud;
     
     [Header("Images")]
-    public List<Sprite> nftImages; 
+    public List<Sprite> nftImages;
+    public List<Material> nftMaterials;
     
     void Start()
     {
@@ -99,9 +100,6 @@ public class SqliteSetBdd : MonoBehaviour
             "(3, 'nyan_cat'  , 'ETH', '','"+ CTP(EthToBtc(00.03f)) +"',    0.03                ,'"+ CTP(EthToLtc(00.03f)) +"','"+ CTP(EthToEur(00.03f)) +"')",
             "(4, 'alice_cat' , 'ETH', '','"+ CTP(EthToBtc(000.7f)) +"',    0.7                 ,'"+ CTP(EthToLtc(00.03f)) +"','"+ CTP(EthToEur(00.03f)) +"')"
         };
-        
-        // Debug.Log(data[0]);
-        // Debug.Log(EurToBtc(57.62f));
         
         // CREATE NTF TABLE
         IDbCommand dbcmd;
@@ -278,57 +276,78 @@ public class SqliteSetBdd : MonoBehaviour
         return s;
     }
     
-    float EurToBtc(float eur)
+    public float EurToBtc(float eur)
     {
         float EUR = gcd.cryptoList[3].value;
         float BTC = gcd.cryptoList[0].value;
         return eur * BTC / EUR;
     }
-    float EurToEth(float eur)
+    public float EurToEth(float eur)
     {
         float EUR = gcd.cryptoList[3].value;
         float ETH = gcd.cryptoList[1].value;
         return eur * ETH / EUR;
     }
-    float EurToLtc(float eur)
+    public float EurToLtc(float eur)
     {
         float EUR = gcd.cryptoList[3].value;
         float LTC = gcd.cryptoList[2].value;
         return eur * LTC / EUR;
     }
     
-    float BtcToEth(float btc)
+    public float BtcToEth(float btc)
     {
         float BTC = gcd.cryptoList[0].value;
         float ETH = gcd.cryptoList[1].value;
         return btc * ETH / BTC;
     }
-    float BtcToLtc(float btc)
+    public float BtcToLtc(float btc)
     {
         float BTC = gcd.cryptoList[0].value;
         float LTC = gcd.cryptoList[2].value;
         return btc * LTC / BTC;
     }
-    float BtcToEur(float btc)
+    public float BtcToEur(float btc)
     {
         float BTC = gcd.cryptoList[0].value;
         float EUR = gcd.cryptoList[3].value;
         return btc * EUR / BTC;
     }
     
-    float EthToBtc(float eth)
+    
+    public float LtcToEth(float ltc)
+    {
+        float LTC = gcd.cryptoList[2].value;
+        float ETH = gcd.cryptoList[1].value;
+        return ltc * ETH / LTC;
+    }
+    public float LtcToBtc(float ltc)
+    {
+        float LTC = gcd.cryptoList[2].value;
+        float BTC = gcd.cryptoList[0].value;
+        return ltc * BTC / LTC;
+    }
+    public float LtcToEur(float ltc)
+    {
+        float LTC = gcd.cryptoList[2].value;
+        float EUR = gcd.cryptoList[3].value;
+        return ltc * EUR / LTC;
+    }
+    
+    
+    public float EthToBtc(float eth)
     {
         float ETH = gcd.cryptoList[1].value;
         float BTC = gcd.cryptoList[0].value;
         return eth * BTC / ETH;
     }
-    float EthToLtc(float eth)
+    public float EthToLtc(float eth)
     {
         float ETH = gcd.cryptoList[1].value;
         float LTC = gcd.cryptoList[2].value;
         return eth * LTC / ETH;
     }
-    float EthToEur(float eth)
+    public float EthToEur(float eth)
     {
         float ETH = gcd.cryptoList[1].value;
         float EUR = gcd.cryptoList[3].value;

@@ -90,6 +90,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8392687189476678019}
     m_Modifications:
+    - target: {fileID: 4758546092721644133, guid: c2a9826922a89ef4d8d2b17fcc23a489, type: 3}
+      propertyPath: m_Text
+      value: -%
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758546092721644133, guid: c2a9826922a89ef4d8d2b17fcc23a489, type: 3}
+      propertyPath: m_Color.a
+      value: 0.39215687
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758546092721644133, guid: c2a9826922a89ef4d8d2b17fcc23a489, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758546092721644133, guid: c2a9826922a89ef4d8d2b17fcc23a489, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758546092721644133, guid: c2a9826922a89ef4d8d2b17fcc23a489, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8990827305126361315, guid: c2a9826922a89ef4d8d2b17fcc23a489, type: 3}
       propertyPath: m_Name
       value: Line_EUR
@@ -192,6 +212,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8392687189476678019}
     m_Modifications:
+    - target: {fileID: 4758546092721644133, guid: c2a9826922a89ef4d8d2b17fcc23a489, type: 3}
+      propertyPath: m_Text
+      value: -%
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758546092721644133, guid: c2a9826922a89ef4d8d2b17fcc23a489, type: 3}
+      propertyPath: m_Color.a
+      value: 0.39215687
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758546092721644133, guid: c2a9826922a89ef4d8d2b17fcc23a489, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758546092721644133, guid: c2a9826922a89ef4d8d2b17fcc23a489, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758546092721644133, guid: c2a9826922a89ef4d8d2b17fcc23a489, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8990827303874398359, guid: c2a9826922a89ef4d8d2b17fcc23a489, type: 3}
       propertyPath: m_Text
       value: 65.37 BTC
@@ -298,6 +338,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8392687189476678019}
     m_Modifications:
+    - target: {fileID: 4758546092721644133, guid: c2a9826922a89ef4d8d2b17fcc23a489, type: 3}
+      propertyPath: m_Text
+      value: -%
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758546092721644133, guid: c2a9826922a89ef4d8d2b17fcc23a489, type: 3}
+      propertyPath: m_Color.a
+      value: 0.39215687
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758546092721644133, guid: c2a9826922a89ef4d8d2b17fcc23a489, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758546092721644133, guid: c2a9826922a89ef4d8d2b17fcc23a489, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758546092721644133, guid: c2a9826922a89ef4d8d2b17fcc23a489, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8990827303874398359, guid: c2a9826922a89ef4d8d2b17fcc23a489, type: 3}
       propertyPath: m_Text
       value: 65.37 LTC
@@ -404,6 +464,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8392687189476678019}
     m_Modifications:
+    - target: {fileID: 4758546092721644133, guid: c2a9826922a89ef4d8d2b17fcc23a489, type: 3}
+      propertyPath: m_Text
+      value: -%
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758546092721644133, guid: c2a9826922a89ef4d8d2b17fcc23a489, type: 3}
+      propertyPath: m_Color.a
+      value: 0.39215687
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758546092721644133, guid: c2a9826922a89ef4d8d2b17fcc23a489, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758546092721644133, guid: c2a9826922a89ef4d8d2b17fcc23a489, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758546092721644133, guid: c2a9826922a89ef4d8d2b17fcc23a489, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8990827303874398359, guid: c2a9826922a89ef4d8d2b17fcc23a489, type: 3}
       propertyPath: m_Text
       value: 65.37 ETH
