@@ -10,6 +10,7 @@ public class GalleryNft : MonoBehaviour
     private GetCryptoData gcd;
 
     [Header("Manipulated")]
+    public int nftId;
     public Text title;
     public Image image;
     
@@ -18,6 +19,11 @@ public class GalleryNft : MonoBehaviour
     public Text eth;
     public Text ltc;
     public Text eur;
+    
+    [HideInInspector] public float btcVal;
+    [HideInInspector] public float ethVal;
+    [HideInInspector] public float ltcVal;
+    [HideInInspector] public float eurVal;
     
     [Header("Indicators")]
     public Text btcInd;
@@ -30,6 +36,10 @@ public class GalleryNft : MonoBehaviour
         bdd = FindObjectOfType<SqliteSetBdd>();
         gcd = FindObjectOfType<GetCryptoData>();
         
+        nftId = id;
+        title.text   = bdd.nftList[id].title;
+        image.material = bdd.nftMaterials[id];
+        
         DisplayValues(id);
         DisplayIndicators(id);
     }
@@ -40,6 +50,11 @@ public class GalleryNft : MonoBehaviour
         eth.text = bdd.nftList[id].eth.ToString("0.000") + " ETH";
         ltc.text = bdd.nftList[id].ltc.ToString("0.000") + " LTC";
         eur.text = bdd.nftList[id].eur.ToString("0.000") + " EUR";
+        
+        btcVal = bdd.nftList[id].btc;
+        ethVal = bdd.nftList[id].eth;
+        ltcVal = bdd.nftList[id].ltc;
+        eurVal = bdd.nftList[id].eur;
         
         switch (bdd.nftList[id].currency)
         {

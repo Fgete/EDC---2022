@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class Login : MonoBehaviour
 {
     [Header("Inputs")]
-    public Text inputLogin;
-    public Text inputPassword;
+    public InputField inputLogin;
+    public InputField inputPassword;
 
     [Header("Manipulated")]
     public GameObject loginScreen;

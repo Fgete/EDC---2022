@@ -54,7 +54,7 @@ public class SqliteSetBdd : MonoBehaviour
         // --- READ NFT TABLE (IF EXIST) TO CHECK IF DATABASE EXISTS
         dbcon = InitConnection();
         dbcon.Open();
-        // DropTables(dbcon);
+        DropTables(dbcon);
         ReadNftTable(dbcon);
         dbcon.Close();
         
@@ -183,6 +183,178 @@ public class SqliteSetBdd : MonoBehaviour
             nftList.Add(sample);
         }
     }
+
+    public void BuyNft(int nftId, string currency, float price)
+    {
+        // --- INITIALIZE CONNECTION
+        dbcon = InitConnection();
+        dbcon.Open();
+        BuyNft(dbcon, nftId, currency, price);
+    }
+    public void BuyNft(IDbConnection conn, int nftId, string currency, float price)
+    {
+        IDbCommand cmnd_update = conn.CreateCommand();
+        
+        // --- UPDATE OWNER
+        string query = "UPDATE nft_table SET owner = '" + ud.pseudo + "' WHERE id = '" + nftId + "'";
+        cmnd_update.CommandText = query;
+        cmnd_update.ExecuteNonQuery();
+        
+        // --- UPDATE REFERENCE
+        query = "UPDATE nft_table SET reference = '" + currency + "' WHERE id = '" + nftId +"'";
+        cmnd_update.CommandText = query;
+        cmnd_update.ExecuteNonQuery();
+        
+        // --- UPDATE REFERENCE VALUE
+        if (currency == "BTC")
+        {
+            query = "UPDATE nft_table SET btc = '" + CTP(price) + "' WHERE id = '" + nftId +"'";
+            cmnd_update.CommandText = query;
+            cmnd_update.ExecuteNonQuery();
+        }
+        else if (currency == "ETH")
+        {
+            query = "UPDATE nft_table SET eth = '" + CTP(price) + "' WHERE id = '" + nftId +"'";
+            cmnd_update.CommandText = query;
+            cmnd_update.ExecuteNonQuery();
+        }
+        else if (currency == "LTC")
+        {
+            query = "UPDATE nft_table SET ltc = '" + CTP(price) + "' WHERE id = '" + nftId +"'";
+            cmnd_update.CommandText = query;
+            cmnd_update.ExecuteNonQuery();
+        }
+        else
+        {
+            query = "UPDATE nft_table SET eur = '" + CTP(price) + "' WHERE id = '" + nftId +"'";
+            cmnd_update.CommandText = query;
+            cmnd_update.ExecuteNonQuery();
+        }
+        
+        // --- UPDATE OTHER CURRENCIES
+        UpdateNftValuesByReference(conn, currency, price, nftId);
+        
+        // --- UPDATE USER WALLET
+        if (currency == "BTC")
+        {
+            query = "UPDATE user_table SET btc = '" + CTP(ud.btc - price) + "' WHERE id = '" + ud.id + "'";
+            cmnd_update.CommandText = query;
+            cmnd_update.ExecuteNonQuery();
+        }
+        else if (currency == "ETH")
+        {
+            query = "UPDATE user_table SET eth = '" + CTP(ud.eth - price) + "' WHERE id = '" + ud.id + "'";
+            cmnd_update.CommandText = query;
+            cmnd_update.ExecuteNonQuery();
+        }
+        else if (currency == "LTC")
+        {
+            query = "UPDATE user_table SET ltc = '" + CTP(ud.ltc - price) + "' WHERE id = '" + ud.id + "'";
+            cmnd_update.CommandText = query;
+            cmnd_update.ExecuteNonQuery();
+        }
+        else
+        {
+            query = "UPDATE user_table SET eur = '" + CTP(ud.eur - price) + "' WHERE id = '" + ud.id + "'";
+            cmnd_update.CommandText = query;
+            cmnd_update.ExecuteNonQuery();
+        }
+        
+        // --- READ & UPDATE NFT LIST
+        ReadNftTable(conn);
+
+        // --- READ & UPDATE USER DATA
+        ReadUserData(conn);
+        
+        // --- DISCONNECTION
+        dbcon.Close();
+    }
+    
+    public void SaleNft(int nftId, string currency, float price)
+    {
+        // --- INITIALIZE CONNECTION
+        dbcon = InitConnection();
+        dbcon.Open();
+        SaleNft(dbcon, nftId, currency, price);
+    }
+    public void SaleNft(IDbConnection conn, int nftId, string currency, float price)
+    {
+        IDbCommand cmnd_update = conn.CreateCommand();
+        
+        // --- UPDATE OWNER
+        string query = "UPDATE nft_table SET owner = '' WHERE id = '" + nftId + "'";
+        cmnd_update.CommandText = query;
+        cmnd_update.ExecuteNonQuery();
+        
+        // --- UPDATE REFERENCE
+        query = "UPDATE nft_table SET reference = '" + currency + "' WHERE id = '" + nftId +"'";
+        cmnd_update.CommandText = query;
+        cmnd_update.ExecuteNonQuery();
+        
+        // --- UPDATE REFERENCE VALUE
+        if (currency == "BTC")
+        {
+            query = "UPDATE nft_table SET btc = '" + CTP(price) + "' WHERE id = '" + nftId +"'";
+            cmnd_update.CommandText = query;
+            cmnd_update.ExecuteNonQuery();
+        }
+        else if (currency == "ETH")
+        {
+            query = "UPDATE nft_table SET eth = '" + CTP(price) + "' WHERE id = '" + nftId +"'";
+            cmnd_update.CommandText = query;
+            cmnd_update.ExecuteNonQuery();
+        }
+        else if (currency == "LTC")
+        {
+            query = "UPDATE nft_table SET ltc = '" + CTP(price) + "' WHERE id = '" + nftId +"'";
+            cmnd_update.CommandText = query;
+            cmnd_update.ExecuteNonQuery();
+        }
+        else
+        {
+            query = "UPDATE nft_table SET eur = '" + CTP(price) + "' WHERE id = '" + nftId +"'";
+            cmnd_update.CommandText = query;
+            cmnd_update.ExecuteNonQuery();
+        }
+        
+        // --- UPDATE OTHER CURRENCIES
+        UpdateNftValuesByReference(conn, currency, price, nftId);
+        
+        // --- UPDATE USER WALLET
+        if (currency == "BTC")
+        {
+            query = "UPDATE user_table SET btc = '" + CTP(ud.btc + price) + "' WHERE id = '" + ud.id + "'";
+            cmnd_update.CommandText = query;
+            cmnd_update.ExecuteNonQuery();
+        }
+        else if (currency == "ETH")
+        {
+            query = "UPDATE user_table SET eth = '" + CTP(ud.eth + price) + "' WHERE id = '" + ud.id + "'";
+            cmnd_update.CommandText = query;
+            cmnd_update.ExecuteNonQuery();
+        }
+        else if (currency == "LTC")
+        {
+            query = "UPDATE user_table SET ltc = '" + CTP(ud.ltc + price) + "' WHERE id = '" + ud.id + "'";
+            cmnd_update.CommandText = query;
+            cmnd_update.ExecuteNonQuery();
+        }
+        else
+        {
+            query = "UPDATE user_table SET eur = '" + CTP(ud.eur + price) + "' WHERE id = '" + ud.id + "'";
+            cmnd_update.CommandText = query;
+            cmnd_update.ExecuteNonQuery();
+        }
+        
+        // --- READ & UPDATE NFT LIST
+        ReadNftTable(conn);
+
+        // --- READ & UPDATE USER DATA
+        ReadUserData(conn);
+        
+        // --- DISCONNECTION
+        dbcon.Close();
+    }
     
     public bool GetUserByLogin(string login, string password)
     {
@@ -221,6 +393,85 @@ public class SqliteSetBdd : MonoBehaviour
         
         // --- SEND FEEDBACK
         return ud.pseudo != ""; // true = GRANTED | false = DENIED
+    }
+
+    void ReadUserData(IDbConnection conn)
+    {
+        // --- INIT COMMAND
+        IDbCommand cmnd_read = dbcon.CreateCommand();
+        IDataReader reader;
+
+        // --- READ IN TABLE
+        string query = "SELECT * FROM user_table WHERE pseudo = '" + Encrypt(ud.pseudo) + "'";
+        cmnd_read.CommandText = query;
+        reader = cmnd_read.ExecuteReader();
+
+        // --- USE BROUGHT DATA (& FILL USER DATA WITH)
+        while (reader.Read())
+        {
+            userData newUd = new userData();
+
+            newUd.id        = int.Parse(reader[0].ToString());
+            newUd.pseudo    = Decrypt(reader[1].ToString());
+            newUd.btc       = float.Parse(reader[3].ToString());
+            newUd.eth       = float.Parse(reader[4].ToString());
+            newUd.ltc       = float.Parse(reader[5].ToString());
+            newUd.eur       = float.Parse(reader[6].ToString());
+
+            ud = newUd;
+        }
+    }
+    
+    void UpdateNftValuesByReference(IDbConnection conn, string reference, float price, int id)
+    {
+        float btc = 0, eth = 0, ltc = 0, eur = 0;
+
+        // --- SET VALUES BY REFERENCE
+        if (reference == "BTC")
+        {
+            btc = price;
+            eth = BtcToEth(price);
+            ltc = BtcToLtc(price);
+            eur = BtcToEur(price);
+        }
+        else if (reference == "ETH")
+        {
+            btc = EthToBtc(price);
+            eth = price;
+            ltc = EthToLtc(price);
+            eur = EthToEur(price);
+        }
+        else if (reference == "LTC")
+        {
+            btc = LtcToBtc(price);
+            eth = LtcToEth(price);
+            ltc = price;
+            eur = LtcToEur(price);
+        }
+        else
+        {
+            btc = EurToBtc(price);
+            eth = EurToEth(price);
+            ltc = EurToLtc(price);
+            eur = price;
+        }
+        
+        IDbCommand cmnd_update = conn.CreateCommand();
+        string query = "UPDATE nft_table SET btc = '" + CTP(btc) + "' WHERE id = '" + id +"'";
+        cmnd_update.CommandText = query;
+        cmnd_update.ExecuteNonQuery();
+        
+        query = "UPDATE nft_table SET eth = '" + CTP(eth) + "' WHERE id = '" + id +"'";
+        cmnd_update.CommandText = query;
+        cmnd_update.ExecuteNonQuery();
+        
+        query = "UPDATE nft_table SET ltc = '" + CTP(ltc) + "' WHERE id = '" + id +"'";
+        cmnd_update.CommandText = query;
+        cmnd_update.ExecuteNonQuery();
+        
+        query = "UPDATE nft_table SET eur = '" + CTP(eur) + "' WHERE id = '" + id +"'";
+        cmnd_update.CommandText = query;
+        cmnd_update.ExecuteNonQuery();
     }
 
     void DropTables(IDbConnection conn)
@@ -313,8 +564,7 @@ public class SqliteSetBdd : MonoBehaviour
         float EUR = gcd.cryptoList[3].value;
         return btc * EUR / BTC;
     }
-    
-    
+
     public float LtcToEth(float ltc)
     {
         float LTC = gcd.cryptoList[2].value;
@@ -333,8 +583,7 @@ public class SqliteSetBdd : MonoBehaviour
         float EUR = gcd.cryptoList[3].value;
         return ltc * EUR / LTC;
     }
-    
-    
+
     public float EthToBtc(float eth)
     {
         float ETH = gcd.cryptoList[1].value;

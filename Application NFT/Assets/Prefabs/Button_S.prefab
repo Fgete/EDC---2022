@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7978712339829950413}
   - component: {fileID: 7978712339829950414}
   m_Layer: 5
-  m_Name: Hear_Left
+  m_Name: Ear_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 7978712340778749743}
   - component: {fileID: 7978712340778749736}
   m_Layer: 5
-  m_Name: Hear_Right
+  m_Name: Ear_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
